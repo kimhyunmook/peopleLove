@@ -40,7 +40,7 @@ export default function Home() {
         loading ?
         <Loading /> :
         <>
-          {el}
+          { el }
           <div className="chatBox">
                 <textarea name="chat" id="chat" placeholder="채팅 내역을 입력해주세요." defaultValue={chat} onChange={changeHandle}></textarea>
                 <SaveBtn onClick={clickHandle} className={emp}/>

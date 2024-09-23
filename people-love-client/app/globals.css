@@ -50,12 +50,16 @@ textarea {
 }
 main {
   width: 100%;
-  padding-bottom:100px;
+  padding-bottom: 100px;
 }
 
 .container {
   max-width: 700px;
   flex-wrap: wrap;
+}
+.description {
+  margin-bottom: 40px;
+  text-align: center;
 }
 .privacyBox,
 .loading {
@@ -155,7 +159,7 @@ main {
   white-space: pre-line;
 }
 
-.loading h2{
+.loading h2 {
   animation: tinkle 1.5s infinite linear;
 }
 
@@ -167,6 +171,6 @@ main {
     opacity: 0;
   }
   100% {
-   opacity: 1;
+    opacity: 1;
   }
 }
