@@ -1,0 +1,17 @@
+"use client"
+import {InputBox, SaveBtn} from './lib' 
+export default function InsertBox () {
+    
+    return (
+        <>
+            <div className="privacyBox flex_center">
+                <div className="content flex_center">
+                    <h2>상대와 나의 이름을 입력해주세요.</h2>
+                    <InputBox id="myName" label="내 이름" />
+                    <InputBox id="partnerName" label="상대 이름" />
+                    <SaveBtn  />
+                </div>
+            </div>
+        </>
+    )
+}

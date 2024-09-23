@@ -1,0 +1,172 @@
+/*Reset*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  line-height: 150%;
+  letter-spacing: -1px;
+  color: #1f1f1f;
+  /* font-family:; */
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+body {
+  background-color: #f0f0f0;
+}
+textarea {
+  resize: none;
+}
+:root {
+  --parimary1_blue_light: #eaf2fd;
+  --parimary1_blue_normal: #4f8bff;
+  --parimary1_pink_light: #ffe2ed;
+  --parimary1_pink_normal: #ff80ae;
+  --gray4: #d9d9d9;
+  --gray7: #595959;
+}
+.flex_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/*Common CSS*/
+.logo {
+  width: 100%;
+  text-align: center;
+  /* margin-top: 25px; */
+  margin-bottom: 60px;
+}
+.logo p:first-of-type {
+  font-size: 100px;
+}
+.logo p:last-of-type {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+main {
+  width: 100%;
+  padding-bottom:100px;
+}
+
+.container {
+  max-width: 700px;
+  flex-wrap: wrap;
+}
+.privacyBox,
+.loading {
+  width: 530px;
+  background: #fafafa;
+  border: 1px solid var(--gray4);
+  border-radius: 30px;
+  padding: 60px 0;
+  margin-bottom: 40px;
+}
+.privacyBox h2,
+.loading h2 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.loading h2 {
+  margin-bottom: 0;
+}
+.privacyBox .content {
+  width: 375px;
+  flex-wrap: wrap;
+}
+.privacyBox .inputBox {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.privacyBox .inputBox label {
+  width: 120px;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.privacyBox .inputBox input {
+  width: 250px;
+  height: 100%;
+  border: 1px solid var(--gray4);
+  border-radius: 45px;
+  padding: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray7);
+}
+.privacyBox .saveBtn {
+  margin-top: 40px;
+}
+
+.saveBtn {
+  width: 100%;
+  height: 60px;
+  border: 0;
+  background-color: var(--parimary1_blue_normal);
+  color: #fff;
+  border-radius: 45px;
+  padding: 20px;
+  font-size: 1.11rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.chatBox {
+  width: 700px;
+}
+.chatBox textarea {
+  width: 100%;
+  height: 200px;
+  border-radius: 30px;
+  border: 1px solid var(--gray4);
+  padding: 18px 24px;
+  margin-bottom: 12px;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--gray7);
+}
+.chatBox .saveBtn.emp {
+  opacity: 0.5;
+}
+
+.result {
+  flex-wrap: wrap;
+  max-width: 900px;
+}
+.resultText {
+  background-color: #fff;
+  width: 900px;
+  min-height: 150px;
+  max-height: 475px;
+  padding: 30px 16px 50px;
+  font-weight: 500;
+  border-radius: 14px;
+  box-shadow: 14px 27px 45px 4px #7090b033;
+  margin-bottom: 52px;
+  white-space: pre-line;
+}
+
+.loading h2{
+  animation: tinkle 1.5s infinite linear;
+}
+
+@keyframes tinkle {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+   opacity: 1;
+  }
+}
