@@ -27,7 +27,7 @@ export default function Home() {
     setLoading(true);
     setResult("");
 
-    const url:string = !!process.env.NEXT_PUBLIC_EC2_URL ? `${process.env.NEXT_PUBLIC_EC2_URL}/judge` : "http://localhost:3000" ;
+    const url:string = !!process.env.NEXT_PUBLIC_EC2_URL ? `${process.env.NEXT_PUBLIC_EC2_URL}/judge` : "http://localhost:3000/judge" ;
       if (!chat.length) return;
       const accessToken = localStorage.getItem('act');
     
