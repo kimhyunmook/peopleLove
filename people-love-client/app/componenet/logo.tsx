@@ -1,7 +1,7 @@
 export default function Logo () {
     let hart = ['💓','💘','💔'];
     return(
-        <div className="logo">
+        <div className="logo headline_sb">
             <p>
             💓
             </p>

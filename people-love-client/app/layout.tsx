@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import "./design.css";
 import Logo from "./componenet/logo";
 
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
 const pretendard = localFont({
   src: "./fonts/Pretendard-Regular.woff2",
   variable: "--font-pretendara",
@@ -32,11 +23,8 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${pretendard.variable}`}>
-        <main className="flex_center">
           <Logo/>
-
           {children}
-        </main>
       </body>
     </html>
   );

@@ -11,7 +11,7 @@ export function InputBox ({id,label}:{id:string,label:string}) {
   
   export function SaveBtn ({className,onClick}:{className?:string,onClick?:React.ReactEventHandler}) {
     return(
-      <button className={`saveBtn ${className}`} onClick={onClick}>
+      <button className={`saveBtn button1_sb ${className}`} onClick={onClick}>
         저장
       </button>
     )

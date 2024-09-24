@@ -1,6 +1,6 @@
 export default function Loading () {
     return (
-        <div className="loading">
+        <div className="loading title_sb">
             <h2>
                 분석중 입니다 
                 <span>.</span>

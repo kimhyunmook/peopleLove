@@ -4,7 +4,7 @@ export default function InsertBox () {
     
     return (
         <>
-            <h3 className='description'>
+            <h3 className='description title_sb'>
                 상대방의 대화를 통해 호감도을 알 수 있어요! <br/>
                 ex : 카카오톡, 디스코드
             </h3>
