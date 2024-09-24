@@ -1,5 +1,4 @@
 "use client"
-import {InputBox, SaveBtn} from './lib' 
 export default function InsertBox () {
     
     return (

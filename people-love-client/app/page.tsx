@@ -1,9 +1,7 @@
 "use client"
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import InsertBox from "./componenet/insert";
-import axios from "axios";
 import { SaveBtn } from "./componenet/lib";
-import Result from "./result/page";
 import Loading from "./loading/page";
 
 export default function Home() {
@@ -13,7 +11,12 @@ export default function Home() {
   const [result,setResult] = useState("");
   const [el,setEl] =useState(<InsertBox/>);
   useEffect(()=>{
-    if (!!result) setEl(<Result text={result}/>)
+    if (!!result) setEl(        
+    <div className="result flex_center">
+      <p className="resultText body2_sb">
+        { result }
+      </p>
+    </div>)
   },[result])
   async function clickHandle () {
     setLoading(true);
@@ -23,7 +26,7 @@ export default function Home() {
 
       if (!chat.length) return;
       const accessToken = localStorage.getItem('act');
-      let res: any = await fetch(url, {
+      const res: Response = await fetch(url, {
         method: 'POST',
         headers: {
           Authorization:` Bearer ${accessToken}`,
@@ -32,6 +35,7 @@ export default function Home() {
         body: JSON.stringify({ text: chat }),
       });
       if (res.ok) {
+        if (!!!res.body) return; 
         const reader = res.body.getReader();
         const processStream = async () => {
           setLoading(false)
@@ -45,9 +49,6 @@ export default function Home() {
             const decoder = new TextDecoder('utf-8');
             // TextDecoder를 사용하여 한 번에 디코드합니다.
             let chunk = decoder.decode(value, { stream: true });
-            // chunk = chunk.replace(/^data: /, '');
-            // chunk = chunk.replace(/^data:/, '');
-            // chunk = chunk.replace('data:', '');
             //줄바꿈2개일떈 1개로 변형
             chunk = chunk.replace(/\n\n/g, '');
             // append to the response

@@ -1,5 +1,5 @@
 export default function Logo () {
-    let hart = ['💓','💘','💔'];
+    // let hart = ['💓','💘','💔'];
     return(
         <div className="logo headline_sb">
             <p>
