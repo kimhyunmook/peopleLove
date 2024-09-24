@@ -20,13 +20,17 @@ export default function Home() {
     </div>)
   },[result])
   async function clickHandle () {
+    if (!!!chat) {
+      alert('채팅 내역을 입력해주세요');
+      return
+    } 
     setLoading(true);
     setResult("");
 
-    const url:string = !!process.env.NEXT_PUBLIC_EC2_URL ? `${process.env.NEXT_PUBLIC_EC2_URL}/judge` : "" ;
-    console.log(url)
+    const url:string = !!process.env.NEXT_PUBLIC_EC2_URL ? `${process.env.NEXT_PUBLIC_EC2_URL}/judge` : "http://localhost:3000" ;
       if (!chat.length) return;
       const accessToken = localStorage.getItem('act');
+    
       const res: Response = await fetch(url, {
         method: 'POST',
         headers: {
