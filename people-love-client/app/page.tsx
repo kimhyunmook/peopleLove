@@ -10,6 +10,7 @@ export default function Home() {
   const [loading,setLoading] = useState(false);
   const [result,setResult] = useState("");
   const [el,setEl] =useState(<InsertBox/>);
+  console.log('??????')
   useEffect(()=>{
     if (!!result) setEl(        
     <div className="result flex_center">
@@ -22,8 +23,8 @@ export default function Home() {
     setLoading(true);
     setResult("");
 
-    const url =`http://localhost:5000/judge`;
-
+    const url:string = !!process.env.NEXT_PUBLIC_EC2_URL ? `${process.env.NEXT_PUBLIC_EC2_URL}/judge` : "" ;
+    console.log(url)
       if (!chat.length) return;
       const accessToken = localStorage.getItem('act');
       const res: Response = await fetch(url, {
