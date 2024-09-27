@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "front": "cd people-love-client && npm start",
+    "front_dev": "cd people-love-client && npm run dev",
     "back": "cd people-love-server && node dist/main.js"
 
   },

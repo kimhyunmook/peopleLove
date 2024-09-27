@@ -1,11 +1,23 @@
-export default function Logo () {
+"use client"
+
+import { useRouter } from "next/navigation"
+
+type PropsLogo = {
+}
+export default function Logo ({}:PropsLogo) {
+    const router = useRouter()
     // let hart = ['💓','💘','💔'];
+    const reset = (e:React.MouseEvent) =>{
+        e.preventDefault()
+        window.location.href='/'
+    }
+
     return(
-        <div className="logo headline_sb">
+        <a href="/" className="logo headline_sb" onClick={reset}>
             <p>
             💓
             </p>
-            <p>호감도 분석기</p>
-        </div>
+            <p className="headline_sb">호감도 분석기</p>
+        </a>
     )
 }

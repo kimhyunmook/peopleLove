@@ -1,8 +1,10 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import InsertBox from "./componenet/insert";
 import { SaveBtn } from "./componenet/lib";
+import Logo from "./componenet/logo";
 import Loading from "./loading/page";
+import OptionBar from "./componenet/optionBar";
 
 export default function Home() {
   const [chat,setChat] = useState("");
@@ -10,7 +12,7 @@ export default function Home() {
   const [loading,setLoading] = useState(false);
   const [result,setResult] = useState("");
   const [el,setEl] =useState(<InsertBox/>);
-  console.log('??????')
+  const textArea = useRef<HTMLTextAreaElement>(null);
   useEffect(()=>{
     if (!!result) setEl(        
     <div className="result flex_center">
@@ -19,18 +21,24 @@ export default function Home() {
       </p>
     </div>)
   },[result])
-  async function clickHandle () {
+  async function clickHandle (e:React.MouseEvent<HTMLButtonElement>) {
+    // 요기해야됑..
+    if (e.currentTarget.parentNode && e.currentTarget.parentNode.classList) {}
+    // console.log(e..parentNode)
     if (!!!chat) {
       alert('채팅 내역을 입력해주세요');
       return
     } 
+    if (chat.length < 30) {
+      alert('채팅 내역이 너무 짧습니다.');
+      return
+    }
     setLoading(true);
     setResult("");
 
     const url:string = !!process.env.NEXT_PUBLIC_EC2_URL ? `${process.env.NEXT_PUBLIC_EC2_URL}/judge` : "http://localhost:3000/judge" ;
       if (!chat.length) return;
       const accessToken = localStorage.getItem('act');
-    
       const res: Response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -46,17 +54,11 @@ export default function Home() {
           setLoading(false)
 
           while (true) {
-            // .read() returns 2 properties
             const { done, value } = await reader.read();
-            // if done is true
             if (done) break;
-            
             const decoder = new TextDecoder('utf-8');
-            // TextDecoder를 사용하여 한 번에 디코드합니다.
             let chunk = decoder.decode(value, { stream: true });
-            //줄바꿈2개일떈 1개로 변형
             chunk = chunk.replace(/\n\n/g, '');
-            // append to the response
             setResult((text) => {
               const updatedResult = text + chunk;
               return updatedResult;
@@ -64,16 +66,16 @@ export default function Home() {
           }
         };
     
-        // setTalkPossibleCount(talkPossibleCount - 1);
         processStream().catch((err) => console.log('--stream error--', err));
-      } else {
-        // setIsChatStream(false);
-      }
-
-
-
-
-
+      } 
+  }
+  function restHandle (e:React.MouseEvent) {
+    e.preventDefault();
+    if(!!textArea.current) {
+      textArea.current.value ="";
+      setChat("");
+      setEmp('emp')
+    }
   }
   
   function changeHandle (e:React.ChangeEvent<HTMLTextAreaElement>) {
@@ -83,20 +85,38 @@ export default function Home() {
     else setEmp('emp')
   }
 
+  const textareaAtt = {
+    name:'chat',
+    id:'chat',
+    className:'body2_m',
+    placeHolder:'채팅 내역을 입력해주세요.',
+    defaultValue:chat,
+    onChange:changeHandle
+  }
+  const saveBtnAtt = {
+    className:emp,
+    onClick:clickHandle,
+    resetClick:restHandle
+  }
+
   return (
-    <main className="flex_center">
+    <main className="">
+      <Logo />
       <div className="container flex_center">
-        {
-          loading ?
-          <Loading /> :
-          <>
-            { el }
-            <div className="chatBox">
-                  <textarea name="chat" id="chat" className="body2_m" placeholder="채팅 내역을 입력해주세요." defaultValue={chat} onChange={changeHandle}></textarea>
-                  <SaveBtn onClick={clickHandle} className={emp}/>
-            </div>
-          </>
-        }
+        <OptionBar></OptionBar>
+        <div className="content flex_center">
+          {
+            loading ?
+            <Loading /> :
+            <>
+              { el }
+              <div className="chatBox">
+                    <textarea ref={textArea} {...textareaAtt}></textarea>
+                    <SaveBtn {...saveBtnAtt}/>
+              </div>
+            </>
+          }
+        </div>
       </div>
     </main>
   );

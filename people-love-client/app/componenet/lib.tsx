@@ -8,11 +8,21 @@ export function InputBox ({id,label}:{id:string,label:string}) {
       </div>
     )
   }
+  interface PropsBtn {
+    className?:string,
+    onClick:React.ReactEventHandler,
+    resetClick:React.ReactEventHandler
+  }
   
-  export function SaveBtn ({className,onClick}:{className?:string,onClick?:React.ReactEventHandler}) {
+  export function SaveBtn ({className,onClick,resetClick}:PropsBtn) {
     return(
-      <button className={`saveBtn button1_sb ${className}`} onClick={onClick}>
-        저장
-      </button>
+      <div className={`btnArea ${className}`}>
+        <button className={`saveBtn button1_sb `} onClick={onClick}>
+          확인
+        </button>
+        <button type="reset" className="resetBtn button1_sb" onClick={resetClick}>
+          리셋
+        </button>
+      </div>
     )
   }

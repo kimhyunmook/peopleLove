@@ -6,7 +6,6 @@
   line-height: 150%;
   letter-spacing: -1px;
   color: #1f1f1f;
-  /* font-family:; */
 }
 
 a {
@@ -22,8 +21,11 @@ body {
   --parimary1_blue_normal: #4f8bff;
   --parimary1_pink_light: #ffe2ed;
   --parimary1_pink_normal: #ff80ae;
+  --parimary1_red: #ff4545;
   --gray4: #d9d9d9;
   --gray7: #595959;
+
+  --shadow: 14px 22px 45px 4px #7090b033;
 }
 textarea {
   resize: none;
@@ -38,44 +40,45 @@ textarea {
 
 /*Common CSS*/
 .logo {
-  width: 100%;
+  width: 250px;
+  display: block;
   text-align: center;
-  margin-top: 25px;
-  margin-bottom: 60px;
+  margin: 25px auto 60px;
 }
 .logo p:first-of-type {
   font-size: 100px;
 }
-.logo p:last-of-type {
-}
+
 main {
   width: 100%;
   padding-bottom: 100px;
 }
 
 .container {
+}
+.container .content {
   max-width: 700px;
   flex-wrap: wrap;
 }
 .description {
-  margin-bottom: 40px;
   text-align: center;
+}
+.description span {
+  color: var(--parimary1_red);
 }
 .privacyBox,
 .loading {
   width: 530px;
   background: #fafafa;
-  border: 1px solid var(--gray4);
-  border-radius: 30px;
-  padding: 60px 0;
+  box-shadow: var(--shadow);
+  /* border: 2px solid var(--gray4); */
+  border-radius: 20px;
+  padding: 30px 0;
   margin-bottom: 40px;
 }
 .privacyBox h2,
 .loading h2 {
-  font-weight: 600;
-  font-size: 1.5rem;
   text-align: center;
-  margin-bottom: 40px;
 }
 .loading h2 {
   margin-bottom: 0;
@@ -111,14 +114,25 @@ main {
   margin-top: 40px;
 }
 
-.saveBtn {
-  width: 100%;
-  height: 60px;
-  border: 0;
+.btnArea {
+  display:flex;
+  justify-content: center;
+}
+.btnArea .resetBtn {
+  width: 200px;
+  border: 1px solid var(--gray4);
+  padding: 15px 0;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.btnArea .saveBtn {
+  margin-right:10px;
+  width: 200px;
+  border: 1px solid var(--gray4);
   background-color: var(--parimary1_blue_normal);
   color: #fff;
-  border-radius: 45px;
-  padding: 20px;
+  border-radius: 20px;
+  padding: 15px 0;
   cursor: pointer;
 }
 
@@ -128,7 +142,7 @@ main {
 .chatBox textarea {
   width: 100%;
   height: 200px;
-  border-radius: 30px;
+  border-radius: 20px;
   border: 1px solid var(--gray4);
   padding: 18px 24px;
   margin-bottom: 12px;
@@ -137,12 +151,12 @@ main {
   -ms-overflow-style: none; /* IE 및 Edge */
 }
 .chatBox textarea:focus {
-  border:2px solid var(--parimary1_blue_normal)
+  border: 2px solid var(--parimary1_blue_normal);
 }
 .chatBox textarea::-webkit-scrollbar {
   display: none; /* 스크롤바 숨기기 */
 }
-.chatBox .saveBtn.emp {
+.chatBox .btnArea.emp {
   opacity: 0.5;
 }
 
@@ -157,7 +171,7 @@ main {
   max-height: 475px;
   padding: 30px 16px 50px;
   border-radius: 14px;
-  box-shadow: 14px 27px 45px 4px #7090b033;
+  box-shadow: var(--shadow);
   margin-bottom: 52px;
   white-space: pre-line;
 }
@@ -176,4 +190,13 @@ main {
   100% {
     opacity: 1;
   }
+}
+
+.optionBar {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  background: var(--gray4);
+  border-radius: 10px;
+  padding: 10px;
 }
