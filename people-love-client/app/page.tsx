@@ -23,7 +23,7 @@ export default function Home() {
   },[result])
   async function clickHandle (e:React.MouseEvent<HTMLButtonElement>) {
     // 요기해야됑..
-    if (e.currentTarget.parentNode && e.currentTarget.parentNode.classList) {}
+    // if (e.currentTarget.parentNode && e.currentTarget.parentNode.classList) {}
     // console.log(e..parentNode)
     if (!!!chat) {
       alert('채팅 내역을 입력해주세요');
@@ -89,7 +89,7 @@ export default function Home() {
     name:'chat',
     id:'chat',
     className:'body2_m',
-    placeHolder:'채팅 내역을 입력해주세요.',
+    placeholder:'채팅 내역을 입력해주세요.',
     defaultValue:chat,
     onChange:changeHandle
   }

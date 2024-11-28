@@ -1,15 +1,19 @@
 "use client"
 
 import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react";
 
 type PropsLogo = {
 }
 export default function Logo ({}:PropsLogo) {
     const router = useRouter()
-    // let hart = ['💓','💘','💔'];
+    let hart = ['💓','💘','💔'];
+    const [random,setRandom]=useState(Math.floor(Math.random()*hart.length))
+    useEffect(()=>{})
+    console.log(random)
     const reset = (e:React.MouseEvent) =>{
         e.preventDefault()
-        window.location.href='/'
+        router.push('/')
     }
 
     return(
